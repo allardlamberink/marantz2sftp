@@ -1,0 +1,12 @@
+.DS_Store
+*.pyc
+*.mo
+.cache/
+.pytest_cache/
+.idea/
+.metadata/
+.settings/
+settings/local_settings.py
+id_rsa
+aws_notes.txt
+package/
