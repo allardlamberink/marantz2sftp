@@ -25,4 +25,4 @@ upload the code to aws:
 aws lambda update-function-code  --function-name "GetTodaysOpnameFilename" --zip-file fileb://gettodaysopname.zip
 ```
 
-
+update 20200308: migrate to python3
