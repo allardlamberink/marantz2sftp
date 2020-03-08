@@ -17,7 +17,11 @@ aws lambda invoke --invocation-type "Event" --function-name "GetTodaysOpnameFile
 
 update code:
 ```
+cd package
 zip -r9 ../gettodaysopname.zip .
+zip -g gettodaysopname.zip lambda_function.py
+zip -g gettodaysopname.zip id_rsa
+zip -r9 -g gettodaysopname.zip settings/
 ```
 
 upload the code to aws:
@@ -26,3 +30,8 @@ aws lambda update-function-code  --function-name "GetTodaysOpnameFilename" --zip
 ```
 
 update 20200308: migrate to python3
+omdat de request module niet ondersteund wordt door lambda moet er een deployment package worden gemaakt.
+de zip file moet dus ook alle noodzakelijke bibliotheken bevatten!
+
+pip install --target ./package -r ./requirements.txt
+
