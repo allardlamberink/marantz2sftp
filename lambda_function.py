@@ -217,8 +217,7 @@ def lambda_handler(event, context):
             search_date_max = datetime(search_date.year, search_date.month, search_date.day, 22, 0, 0)
         else:
             print ("geen avond en geen morgendienst")
-
-        matches = [it for it in dwnldItems if (it.filedate > search_date_min and it.filedate < search_date_max)]
+        matches = [it for it in dwnldItems if ((it.filedate > search_date_min and it.filedate < search_date_max) and (it.filesize[:-2]>10000))]
     else:
         print("manual")
         choosen_fileno = input("Type dienstnummer om te downloaden: ")
@@ -248,8 +247,11 @@ def lambda_handler(event, context):
             # todo verwijderen oude files...
         else:
             print("sftp file bestaat al, kan niet doorgaan, exit now..")
+    elif len(matches) > 1:
+        print("meerdere diensten gevonden")
+        # todo: zoeken op basis van filesize en dan de grootste downloaden
     else:
-        print("geen diensten, of meer dan 1 gevonden, kan niet doorgaan met download")
+        print("geen diensten gevonden, kan niet doorgaan met download")
 
     print("finished")
     return {
