@@ -1,4 +1,4 @@
-requests==2.22.0
+requests==2.31.0
 progressbar2==3.42.0
 pysftp==0.2.9
 #awscli==1.16.225
